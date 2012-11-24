@@ -48,19 +48,18 @@ endef
 
 # Don't ask for documentation to be built.
 CONFIGURE_ARGS += \
-    --disable-lynx
+	--disable-lynx
 
 define Build/Configure
-    (cd $(PKG_BUILD_DIR); autoreconf -f)
-    $(call Build/Configure/Default, )
+	(cd $(PKG_BUILD_DIR); autoreconf -f)
+	$(call Build/Configure/Default, )
 endef
 
 define Package/nss-mdns/install
-    $(INSTALL_DIR) $(1)/lib
-    $(CP) $(PKG_INSTALL_DIR)/usr/lib/libnss_mdns*.so.* $(1)/lib/
-        $(INSTALL_DIR) $(1)/etc
-    $(INSTALL_DATA) ./files/nsswitch-README.conf $(1)/etc/
-
+	$(INSTALL_DIR) $(1)/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libnss_mdns*.so.* $(1)/lib/
+	$(INSTALL_DIR) $(1)/etc
+	$(INSTALL_DATA) ./files/nsswitch-README.conf $(1)/etc/
 endef
 
 $(eval $(call BuildPackage,nss-mdns))
