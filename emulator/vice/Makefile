@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=vice
 PKG_VERSION:=2.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://www.zimmers.net/anonftp/pub/cbm/crossplatform/emulators/VICE/
@@ -23,7 +23,7 @@ define Package/vice/Default
   CATEGORY:=Emulators
   TITLE:=Vice 64
   URL:=http://www.viceteam.org/
-  DEPENDS:=+libbsd +libsdl +libjpeg +libpng +zlib
+  DEPENDS:=+libstdcpp +libbsd +libsdl +libjpeg +libpng +zlib
 endef
 
 define Package/vice/Default/description
@@ -42,7 +42,6 @@ endef
 
 define Build/Configure
 	$(call Build/Configure/Default, \
-		--without-resid \
 		--disable-realdevice \
 		--with-sdl \
 		--enable-sdlui \
