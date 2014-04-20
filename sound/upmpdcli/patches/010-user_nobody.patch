@@ -1,0 +1,11 @@
+--- a/upmpd/upmpd.cxx
++++ b/upmpd/upmpd.cxx
+@@ -1198,7 +1198,7 @@ int main(int argc, char *argv[])
+ 	string configfile;
+ 	string friendlyname(dfltFriendlyName);
+ 	bool ownqueue = true;
+-	string upmpdcliuser("upmpdcli");
++	string upmpdcliuser("nobody");
+ 	string pidfilename("/var/run/upmpdcli.pid");
+ 
+ 	const char *cp;

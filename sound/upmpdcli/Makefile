@@ -54,11 +54,15 @@ define Package/upmpdcli/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/.libs/upmpdcli $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/etc/init.d
-#	$(INSTALL_BIN) ./files/upmpdcli.init $(1)/etc/init.d/upmpdcli
+	$(INSTALL_BIN) ./files/upmpdcli.init $(1)/etc/init.d/upmpdcli
 	$(INSTALL_DIR) $(1)/etc
-#	$(INSTALL_CONF) ./files/upmpdcli.config $(1)/etc/config/upmpdcli
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/upmpd/upmpdcli.conf $(1)/etc/upmpdcli.conf
 	$(INSTALL_DIR) $(1)/usr/share/upmpdcli
 	$(CP) $(PKG_BUILD_DIR)/upmpd/*.xml $(1)/usr/share/upmpdcli
+endef
+
+define Package/upmpdcli/conffiles
+/etc/upmpdcli.conf
 endef
 
 $(eval $(call BuildPackage,libupnpp))
